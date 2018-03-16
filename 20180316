@@ -1,0 +1,16 @@
+#习题11：提问
+#age = input("How old are you? ") 
+#height =input("How tall are you? ") 
+#weight =input("How much do you weigh? ")
+#print( "So, you're %r old, %r tall and %r heavy." % (age, height, weight))
+
+#习题12：提示别人
+# 学习pydoc 的使用
+
+#习题13：参数，解包，变量
+from sys import argv
+script,first,second,third=argv  #解包：将argv中的东西解包，所有参数一次赋予左边的变量名
+print("The script is called:",script)
+print("Your first variable is:",first)
+print("Your second variable is:",second)
+print("Your third variable is:",third)
