@@ -1,0 +1,69 @@
+Result2 这个excel为描述性统计
+Result3-1 为相关性分析
+Result4  sheet1，sheet2分别为表4和表6，在一个excel里!不要找不到
+
+
+以下为Python代码
+
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jul  5 13:29:14 2019
+
+@author: dell
+"""
+
+# -*- coding: utf-8 -*-
+import pandas as pd
+#from pandas import DataFrame
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import mode
+import scipy.stats as stats
+import statsmodels.api as sm
+
+location = 'C:\\Users\\dell\\Desktop\\job0705\\job0705.csv'
+df = pd.read_csv(location,encoding="gbk")
+#描述性统计
+a=df.describe()
+#保存到EXCEL
+print(a.tail())
+a.to_csv('C:\\Users\\dell\\Desktop\\job0705\\result2.csv')
+
+#求相关系数 和 p值
+b=df.corr()
+b
+#保存
+b.to_csv('C:\\Users\\dell\\Desktop\\job0705\\result3.csv')
+
+stats.pearsonr(df['FINRATIO_w'], df['BCEOFIN'])
+stats.pearsonr(df['FINRATIO_w'], df['NCEOFIN'])
+stats.pearsonr(df['FINRATIO_w'], df['CEOFIN'])
+stats.pearsonr(df['BCEOFIN'],df['NCEOFIN'])
+stats.pearsonr(df['BCEOFIN'],df['CEOFIN'])
+stats.pearsonr(df['NCEOFIN'],df['CEOFIN'])
+
+#表6回归
+location = 'C:\\Users\\dell\\Desktop\\job0705\\job0705-1.csv'
+df1 = pd.read_csv(location,encoding="gbk")
+df1.head()
+y1=df1.iloc[:,0]
+x3=df1.iloc[:,1:17]
+x3['_cons']=1
+model = sm.OLS(y1,x3)
+results=model.fit()
+results.summary()
+
+
+#表4回归
+location = 'C:\\Users\\dell\\Desktop\\job0705\\job0705-1.csv'
+df2 = pd.read_csv(location,encoding="gbk")
+del df2['BCEOFIN'] 
+del df2['NCEOFIN'] 
+df1.head()
+y1=df2.iloc[:,0]
+x3=df2.iloc[:,1:16]
+x3['_cons']=1
+model = sm.OLS(y1,x3)
+results=model.fit()
+results.summary()
+
