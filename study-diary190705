@@ -1,0 +1,19 @@
+pandas保存数据到CSV和Excel
+df.to_csv('D:/PythonWorkSpace/TestData/PandasNumpy.csv')#存储到CSV中
+#df.to_excel('D:/PythonWorkSpace/TestData/PandasNumpy.xlsx')#存储到Excel中(需要提前导入库 pip install openpyxl)
+
+#pandas进行描述性统计(包括均值，标准差，最大最小值，中位数等）
+dataframe.describe()
+
+#查看数据类型
+df.dtypes
+
+#相关系数
+df.corr()
+
+#显著性检验
+import scipy.stats as stats
+stats.pearsonr(df['Guba'],df['Value'])
+(0.256165703418037, 8.10519823509109e-07)
+#输出结果第一个值为pearsonr相关系数，
+#第二个为p-value，所以这里Guba列和Value值是显著相关的
