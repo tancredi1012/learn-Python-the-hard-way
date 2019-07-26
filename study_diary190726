@@ -1,6 +1,6 @@
 #类的学习，类的新理解
 # __init__ 是这个类给自己的原始属性，每个新对象都可以给自己设置初始属性
-class Dog():
+class Dog:
     #initialisation method with internal data
     def __init__(self,petname,temp):
         self.name=petname
