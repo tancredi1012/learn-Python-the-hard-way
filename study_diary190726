@@ -1,0 +1,31 @@
+#类的学习，类的新理解
+# __init__ 是这个类给自己的原始属性，每个新对象都可以给自己设置初始属性
+class Dog():
+    #initialisation method with internal data
+    def __init__(self,petname,temp):
+        self.name=petname
+        self.temperature=temp
+    
+    #get status
+    def status(self):
+        print('dog name is',self.name)
+        print('dog temperature is',self.temperature)
+        pass
+    
+    # set temperature
+    def setTemperature(self,temp):
+        self.temperature=temp;
+        pass
+    
+    #dogs can bark()
+    def bark(self):
+        print('woof!')
+        pass
+    pass
+    
+    
+lassie=Dog('lassie',37)
+lassie.status()
+
+lassie.setTemperature(30)
+lassie.status()
